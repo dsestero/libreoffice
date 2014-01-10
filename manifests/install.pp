@@ -11,37 +11,42 @@
 #
 # == Actions:
 #
-# Download the distribution of the main installer from the source under <tt>/opt</tt>, 
+# Download the distribution of the main installer from the base url provided under <tt>/tmp</tt>, 
 # and installs all <tt>.deb</tt>.
 #
 # == Sample usage:
 #
 #  class {'libreoffice::install': libreoffice_vers => '4.1.3', libreoffice_incr => '.2',}
-class libreoffice::install ($libreoffice_vers, $libreoffice_incr) {
-
-  $libreoffice_dist = "LibreOffice_${libreoffice_vers}_Linux_x86-64_deb"
-  $libreoffice_inst_folder = "LibreOffice_${libreoffice_vers}${libreoffice_incr}_Linux_x86-64_deb"
-    
-  Exec {
-    logoutput => 'on_failure',
-  }
-
-  exec {'download_libreoffice':
-    command => "wget -P /tmp/ http://download.documentfoundation.org/libreoffice/stable/${libreoffice_vers}/deb/x86_64/${libreoffice_dist}.tar.gz",
-    creates => "/tmp/${libreoffice_dist}.tar.gz",
-  }
+class libreoffice::install ($majorver, $minorver, $incr, $subincr, $baseurl) {
   
-  exec {'uncompress_libreoffice':
-    command => "tar xzf /tmp/${libreoffice_dist}.tar.gz -C /tmp",
-    creates => "/tmp/${libreoffice_inst_folder}",
-    require => Exec['download_libreoffice'],
+  $version = "${majorver}.${minorver}.${incr}"
+  $dist = "LibreOffice_${version}_Linux_x86-64_deb"
+  $inst_folder = "LibreOffice_${version}.${subincr}_Linux_x86-64_deb"
+    
+#  exec {'download_libreoffice':
+#    command => "wget -P /tmp/ ${baseurl}/${libreoffice_vers}.tar.gz",
+#    creates => "/tmp/${libreoffice_vers}.tar.gz",
+#  }
+#  
+#  exec {'uncompress_libreoffice':
+#    command => "tar xzf /tmp/${libreoffice_vers}.tar.gz -C /tmp",
+#    creates => "/tmp/${libreoffice_inst_folder}",
+#    require => Exec['download_libreoffice'],
+#  }
+  
+   libreoffice::download_uncompress {'dwnl_inst_libreoffice':
+    download_url  => "${baseurl}/${dist}.tar.gz",
+    dest_folder   => '/tmp',
+    creates       => "/tmp/${inst_folder}",
+    uncompress    => 'tar.gz',
   }
   
   exec {'install_libreoffice':
     command => "dpkg -i *.deb",
-    cwd     => "/tmp/${libreoffice_inst_folder}/DEBS",
-    creates => '/opt/libreoffice4.1',
-    require => Exec['uncompress_libreoffice'],
+    cwd     => "/tmp/${inst_folder}/DEBS",
+    creates => "/opt/libreoffice${majorver}.${minorver}",
+    require => Libreoffice::Download_uncompress['dwnl_inst_libreoffice'],
+    logoutput => 'on_failure',
   }
   
   file {'/opt/libreoffice':

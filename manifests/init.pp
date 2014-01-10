@@ -18,10 +18,18 @@
 #
 # == Sample usage:
 #
-#  class {'libreoffice': libreoffice_vers => '4.1.3', libreoffice_incr => '.2',}
-class libreoffice ($libreoffice_vers, $libreoffice_incr) {
+# class {'libreoffice': 
+#   majorver => '4',
+#   minorver => '1',
+#   incr => '3',
+#   subincr => '2',
+# }
+class libreoffice ($majorver, $minorver, $incr, $subincr) {
   class {'libreoffice::install':
-    libreoffice_vers => $libreoffice_vers,
-    libreoffice_incr => $libreoffice_incr,
+    majorver => $majorver,
+    minorver => $minorver,
+    incr => $incr,
+    subincr => $subincr,
+    baseurl => 'http://jee.invallee.it/dist',
   } ~> class {'libreoffice::service':}
 }
