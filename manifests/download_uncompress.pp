@@ -6,11 +6,12 @@
 #
 # $download_url::   URL from which to download.
 #
-# $dest_folder::    Destination folder.
+# $dest_folder::    Destination folder where to unzip (or possibly only download) the distribution.
 #
 # $creates::        Folder created after downloading and possibly unzipping, useful to make the resource type idempotent.
 #
-# $uncompress::     +true+ if the downloaded file is a .zip that has to be unzipped in +dest_folder+.
+# $uncompress::     Specify the type of compression used by the distribution or if no uncompression is needed.
+#                   Possible values are <tt>zip</tt>, <tt>tar.gz</tt>. Any other value is interpreted as no uncompression needed.
 #                   Defaults to +false+.
 #
 # $user::           user to be used when performing the download and the eventual uncompression.
