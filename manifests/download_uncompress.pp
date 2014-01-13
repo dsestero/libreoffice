@@ -13,6 +13,12 @@
 # $uncompress::     +true+ if the downloaded file is a .zip that has to be unzipped in +dest_folder+.
 #                   Defaults to +false+.
 #
+# $user::           user to be used when performing the download and the eventual uncompression.
+#                   Defaults to +root+.
+#
+# $group::          group to be used when performing the download and the eventual uncompression.
+#                   Defaults to +root+.
+#
 # == Actions:
 #
 # Performs a wget from the specified url and possibly unzip the downloaded file into the destination folder.

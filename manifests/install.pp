@@ -5,9 +5,16 @@
 #
 # == Parameters:
 #
-# $libreoffice_vers:: Full three number LibreOffice version.
+# $majorver:: Major LibreOffice version.
 #
-# $libreoffice_incr:: LibreOffice incremental version. This is the suffix to the full version found in the main directory when unpacking the distribution.
+# $minorver:: Minor LibreOffice version.
+#
+# $incr::     Incremental LibreOffice version.
+#
+# $subincr::  Sub-incremental LibreOffice incremental version. 
+#             This is the suffix to the full version found in the main directory when unpacking the distribution.
+#
+# $baseurl::  Base url from which to download the distribution.
 #
 # == Actions:
 #
@@ -23,17 +30,6 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr, $baseurl) {
   $dist = "LibreOffice_${version}_Linux_x86-64_deb"
   $inst_folder = "LibreOffice_${version}.${subincr}_Linux_x86-64_deb"
     
-#  exec {'download_libreoffice':
-#    command => "wget -P /tmp/ ${baseurl}/${libreoffice_vers}.tar.gz",
-#    creates => "/tmp/${libreoffice_vers}.tar.gz",
-#  }
-#  
-#  exec {'uncompress_libreoffice':
-#    command => "tar xzf /tmp/${libreoffice_vers}.tar.gz -C /tmp",
-#    creates => "/tmp/${libreoffice_inst_folder}",
-#    require => Exec['download_libreoffice'],
-#  }
-  
    libreoffice::download_uncompress {'dwnl_inst_libreoffice':
     download_url  => "${baseurl}/${dist}.tar.gz",
     dest_folder   => '/tmp',
