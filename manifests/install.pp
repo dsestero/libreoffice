@@ -41,7 +41,7 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr, $baseurl) {
     command => "dpkg -i *.deb",
     cwd     => "/tmp/${inst_folder}/DEBS",
     creates => "/opt/libreoffice${majorver}.${minorver}",
-    require => Libreoffice::Download_uncompress['dwnl_inst_libreoffice'],
+    require => Common::Download_uncompress['dwnl_inst_libreoffice'],
     logoutput => 'on_failure',
   }
   
