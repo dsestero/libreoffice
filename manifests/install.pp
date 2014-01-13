@@ -30,7 +30,7 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr, $baseurl) {
   $dist = "LibreOffice_${version}_Linux_x86-64_deb"
   $inst_folder = "LibreOffice_${version}.${subincr}_Linux_x86-64_deb"
     
-   libreoffice::download_uncompress {'dwnl_inst_libreoffice':
+   common::download_uncompress {'dwnl_inst_libreoffice':
     download_url  => "${baseurl}/${dist}.tar.gz",
     dest_folder   => '/tmp',
     creates       => "/tmp/${inst_folder}",
