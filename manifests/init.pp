@@ -4,14 +4,24 @@
 #
 # == Parameters:
 #
-# $libreoffice_vers:: Full three number LibreOffice version.
+# $majorver:: Major LibreOffice version.
 #
-# $libreoffice_incr:: LibreOffice incremental version. This is the suffix to the full version found in the main directory when unpacking the distribution.
+# $minorver:: Minor LibreOffice version.
+#
+# $incr::     Incremental LibreOffice version.
+#
+# $subincr::  Sub-incremental LibreOffice incremental version. 
+#             This is the suffix to the full version found in the main directory when unpacking the distribution.
+#
+# $baseurl::  Base url from which to download the distribution.
+#
+# $language:: Language of the locale that will be installed among the supported locales on the server and will be set for the +LANG+ system variable.
+#
+# $country::  Country of the locale that will be installed among the supported locales on the server and will be set for the +LANG+ system variable.
 #
 # == Actions:
 #
-# Declares all other classes in the jboss module needed for installing LibreOffice. 
-# Currently, these consists of libreoffice::install, and libreoffice::service.
+# Declares all other classes in the libreoffice module needed for installing LibreOffice and sets up the desired server locale. 
 #
 # == Requires:
 # none
@@ -21,15 +31,16 @@
 # class {'libreoffice': 
 #   majorver => '4',
 #   minorver => '1',
-#   incr => '3',
-#   subincr => '2',
+#   incr     => '3',
+#   subincr  => '2',
+#   locale   => 'it_IT',
 # }
-class libreoffice ($majorver, $minorver, $incr, $subincr) {
+class libreoffice ($majorver, $minorver, $incr, $subincr, $baseurl = 'http://jee.invallee.it/dist', $language, $country) {
   class {'libreoffice::install':
     majorver => $majorver,
     minorver => $minorver,
     incr => $incr,
     subincr => $subincr,
-    baseurl => 'http://jee.invallee.it/dist',
-  } ~> class {'libreoffice::service':}
+    baseurl => $baseurl,
+  }  -> class {'libreoffice::config': language => $language, country => $country} ~> class {'libreoffice::service':}
 }

@@ -45,25 +45,4 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr, $baseurl) {
     logoutput => 'on_failure',
   }
   
-  file {'/opt/libreoffice':
-    ensure  => link,
-    target  => '/opt/libreoffice4.1',
-  }
-  
-  # Init script
-  file {'/etc/init.d/soffice.bin':
-    source  => "puppet:///modules/${module_name}/soffice.bin.init",
-    ensure  => present,
-    owner   => root,
-    group   => root,
-    mode    => 0755,
-  }
-
-  file {'/opt/soffice.bin':
-    source  => "puppet:///modules/${module_name}/soffice.bin",
-    ensure  => present,
-    owner   => root,
-    group   => root,
-    mode    => 0755,
-  }
 }
