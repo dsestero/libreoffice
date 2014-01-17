@@ -22,7 +22,7 @@ class libreoffice::config ($language, $country) {
 
   file { '/etc/default/locale':
     ensure  => present,
-    content => "LANG=\"${language}_${country}.UTF-8\"",
+    content => "LANG=\"${language}_${country}.UTF-8\"\n",
   }
 
   exec { "add_supported_locale_${language}_${country}":
