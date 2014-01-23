@@ -24,7 +24,7 @@ NAME=soffice.bin
 DAEMON=/opt/$NAME
 DAEMON_ARGS='--headless --nofirststartwizard --nologo --accept="socket,host=localhost,port=8100;urp;StarOffice.Service"'
 PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME
+SCRIPTNAME=/etc/init.d/libreofficed
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
@@ -86,10 +86,10 @@ do_stop()
         if [ -f $PIDFILE ]; then
                 killall -9 $NAME 
                 rm -f $PIDFILE
-                echo "${SERVICE} stopped."
+                echo "${NAME} stopped."
                 exit
         fi
-        echo "${SERVICE} is not running."
+        echo "${NAME} is not running."
         exit
 }
 

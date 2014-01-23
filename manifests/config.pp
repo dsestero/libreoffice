@@ -37,8 +37,8 @@ class libreoffice::config ($language, $country) {
   }
 
   # Init script
-  file { '/etc/init.d/soffice.bin':
-    source => "puppet:///modules/${module_name}/soffice.bin.init",
+  file { '/etc/init.d/libreofficed':
+    source => "puppet:///modules/${module_name}/libreofficed",
     ensure => present,
     owner  => root,
     group  => root,
