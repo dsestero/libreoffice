@@ -4,7 +4,7 @@
 # It is intended to be called by libreoffice::libreoffice.
 class libreoffice::service {
 
-  service { 'soffice.bin':
+  service { 'libreofficed':
     ensure     => running,
     hasstatus  => false,
     hasrestart => false,
