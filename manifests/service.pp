@@ -6,7 +6,6 @@ class libreoffice::service {
 
   service { 'libreofficed':
     ensure     => running,
-    hasstatus  => false,
     hasrestart => false,
     enable     => true,
   }
