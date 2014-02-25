@@ -30,7 +30,7 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr) {
   common::download_uncompress { 'dwnl_inst_libreoffice':
     distribution_name => "${dist}.tar.gz",
     dest_folder       => '/tmp',
-    creates           => "/tmp/${inst_folder}",
+    creates           => "/opt/libreoffice${majorver}.${minorver}",
     uncompress        => 'tar.gz',
   }
 
