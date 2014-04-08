@@ -13,15 +13,9 @@
 # $subincr::  Sub-incremental LibreOffice incremental version.
 #             This is the suffix to the full version found in the main directory when unpacking the distribution.
 #
-# $language:: Language of the locale that will be installed among the supported locales on the server and will be set for the +LANG+
-# system variable.
-#
-# $country::  Country of the locale that will be installed among the supported locales on the server and will be set for the +LANG+
-# system variable.
-#
 # == Actions:
 #
-# Declares all other classes in the libreoffice module needed for installing LibreOffice and sets up the desired server locale.
+# Declares all other classes in the libreoffice module needed for installing LibreOffice.
 #
 # == Requires:
 # none
@@ -35,15 +29,13 @@
 #   subincr  => '2',
 #   locale   => 'it_IT',
 #}
-class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
+class libreoffice ($majorver, $minorver, $incr, $subincr) {
   class { 'libreoffice::install':
     majorver => $majorver,
     minorver => $minorver,
     incr     => $incr,
     subincr  => $subincr,
   } -> class { 'libreoffice::config':
-    language => $language,
-    country  => $country
   } ~> class { 'libreoffice::service':
   }
 }
