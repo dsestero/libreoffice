@@ -13,6 +13,10 @@
 # $subincr::  Sub-incremental LibreOffice incremental version.
 #             This is the suffix to the full version found in the main directory when unpacking the distribution.
 #
+# $language:: Language of the locale to be used by the LibreOffice service.
+#
+# $country::  Country of the locale to be used by the LibreOffice service.
+#
 # == Actions:
 #
 # Declares all other classes in the libreoffice module needed for installing LibreOffice.
@@ -29,7 +33,7 @@
 #   subincr  => '2',
 #   locale   => 'it_IT',
 #}
-class libreoffice ($majorver, $minorver, $incr, $subincr) {
+class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
   class { 'libreoffice::install':
     majorver => $majorver,
     minorver => $minorver,

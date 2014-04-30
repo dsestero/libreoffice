@@ -33,4 +33,12 @@ class libreoffice::config {
     group  => root,
     mode   => 0755,
   }
+
+  file { '/etc/default/soffice.bin':
+    ensure  => present,
+    content => template("${module_name}/soffice.bin.erb"),
+    owner   => root,
+    group   => root,
+    mode    => 0644,
+  }
 }
