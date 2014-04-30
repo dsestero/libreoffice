@@ -40,6 +40,8 @@ class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
     incr     => $incr,
     subincr  => $subincr,
   } -> class { 'libreoffice::config':
+    language => $language,
+    country  => $country,
   } ~> class { 'libreoffice::service':
   }
 }

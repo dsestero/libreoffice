@@ -11,7 +11,7 @@
 # Download the distribution of the main installer from the base url provided under <tt>/tmp</tt>,
 # and installs all <tt>.deb</tt>.
 #
-class libreoffice::config {
+class libreoffice::config ($language, $country) {
   file { '/opt/libreoffice':
     ensure => link,
     target => '/opt/libreoffice4.1',
