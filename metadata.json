@@ -1,32 +1,17 @@
 {
   "author": "Dario Sestero",
-  "checksums": {
-    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
-    "manifests/install.pp": "15e68d87a12dbb3051fc40db3c2ad80b",
-    "files/soffice.bin": "512588b6bc09b39a8b2d395498031a2c",
-    "manifests/service.pp": "4afa926714c5e3b116efe61da4a7ec73",
-    "Modulefile": "0e1c819e1838fff98300d55aa03f74d3",
-    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
-    "tests/init.pp": "364a802a3a512a02301a38d8760f7cb6",
-    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
-    "README.markdown": "e2c23a305da4bcaca0885028c2d17983",
-    "templates/soffice.bin.erb": "2562c47d039adde304d552bf1bdd37fc",
-    "manifests/init.pp": "6a12417e4d13488349667be4cd280bea",
-    "files/libreofficed": "d6b2aa400d3263aeb388ec4675e5f3c9",
-    "manifests/config.pp": "19a4d0ae8e432d0c42f0dd4bcb3cfddf"
-  },
-  "dependencies": [
-    {
+  "dependencies": [    {
       "name": "dsestero/common",
-      "version_requirement": "\u003e\u003d 0.2.0"
+      "version_requirement": ">=0.2.0"
     }
   ],
-  "description": "",
-  "license": "",
+  "license": "Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0)",
   "name": "dsestero-libreoffice",
+  "operatingsystem_support": [{"operatingsystem": "Ubuntu"}, {"operatingsystem": "Debian"}],
   "project_page": "",
-  "source": "",
+  "requirements": [{"name": "puppet", "version_requirement": "3.x"}],
+  "source": "ssh://git@puppet/var/lib/git/puppetmodules/libreoffice.git",
   "summary": "Installs and set up a service for libreoffice listening on port 8100.",
-  "types": [],
+  "tags": ["libreoffice"],
   "version": "0.1.0"
 }

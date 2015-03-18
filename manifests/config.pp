@@ -23,7 +23,7 @@ class libreoffice::config ($language, $country) {
     source => "puppet:///modules/${module_name}/libreofficed",
     owner  => root,
     group  => root,
-    mode   => 0755,
+    mode   => '0755',
   }
 
   file { '/opt/soffice.bin':
@@ -31,7 +31,7 @@ class libreoffice::config ($language, $country) {
     source => "puppet:///modules/${module_name}/soffice.bin",
     owner  => root,
     group  => root,
-    mode   => 0755,
+    mode   => '0755',
   }
 
   file { '/etc/default/soffice.bin':
@@ -39,6 +39,6 @@ class libreoffice::config ($language, $country) {
     content => template("${module_name}/soffice.bin.erb"),
     owner   => root,
     group   => root,
-    mode    => 0644,
+    mode    => '0644',
   }
 }
