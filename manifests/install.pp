@@ -12,7 +12,8 @@
 # $incr::     Incremental LibreOffice version.
 #
 # $subincr::  Sub-incremental LibreOffice incremental version.
-#             This is the suffix to the full version found in the main directory when unpacking the distribution.
+#             This is the suffix to the full version found in the main directory
+#             when unpacking the distribution.
 #
 # == Actions:
 #
@@ -21,7 +22,8 @@
 #
 # == Sample usage:
 #
-#  class {'libreoffice::install': libreoffice_vers => '4.1.3', libreoffice_incr => '.2',}
+#  class {'libreoffice::install': libreoffice_vers => '4.1.3', libreoffice_incr
+#  => '.2',}
 class libreoffice::install ($majorver, $minorver, $incr, $subincr) {
   $version = "${majorver}.${minorver}.${incr}"
   $dist = "LibreOffice_${version}_Linux_x86-64_deb"
@@ -38,7 +40,7 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr) {
     command   => "dpkg -i *.deb",
     cwd       => "/tmp/${inst_folder}/DEBS",
     creates   => "/opt/libreoffice${majorver}.${minorver}",
-    require   => Common::Download_uncompress['dwnl_inst_libreoffice'],
+    require   => Download_uncompress['dwnl_inst_libreoffice'],
     logoutput => 'on_failure',
   }
 }
