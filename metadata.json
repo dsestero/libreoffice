@@ -1,6 +1,6 @@
 {
   "name": "dsestero-libreoffice",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Dario Sestero",
   "summary": "Installs and set up a service for libreoffice listening on port 8100.",
   "license": "Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0)",
@@ -23,7 +23,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": "3.x"
+      "version_requirement": ">= 4.0.0"
     }
   ],
   "tags": [

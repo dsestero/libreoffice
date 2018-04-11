@@ -1,38 +1,30 @@
-# = Class: libreoffice
+# This module installs and set up a service for libreoffice listening on port 8100.
 #
-# Installs and set up a service for libreoffice listening on port 8100.
+# This class declares all other classes in the libreoffice module needed for installing LibreOffice.
 #
-# == Parameters:
+# @param majorver [Integer] major LibreOffice version.
 #
-# $majorver:: Major LibreOffice version.
+# @param minorver [Integer] minor LibreOffice version.
 #
-# $minorver:: Minor LibreOffice version.
+# @param incr [Integer] incremental LibreOffice version.
 #
-# $incr::     Incremental LibreOffice version.
+# @param subincr [Integer] sub-incremental LibreOffice incremental version.
+#   This is the suffix to the full version found in the main directory when unpacking the distribution.
 #
-# $subincr::  Sub-incremental LibreOffice incremental version.
-#             This is the suffix to the full version found in the main directory when unpacking the distribution.
+# @param language [String] language of the locale to be used by the LibreOffice service.
 #
-# $language:: Language of the locale to be used by the LibreOffice service.
+# @param country [String] country of the locale to be used by the LibreOffice service.
 #
-# $country::  Country of the locale to be used by the LibreOffice service.
-#
-# == Actions:
-#
-# Declares all other classes in the libreoffice module needed for installing LibreOffice.
-#
-# == Requires:
-# none
-#
-# == Sample usage:
-#
-# class {'libreoffice':
-#   majorver => '4',
-#   minorver => '1',
-#   incr     => '3',
-#   subincr  => '2',
-#   locale   => 'it_IT',
+# @example Declaring in manifest
+#   class {'libreoffice':
+#     majorver => '5',
+#     minorver => '4',
+#     incr     => '6',
+#     subincr  => '2',
+#     locale   => 'it_IT',
 #}
+#
+# @author Dario Sestero
 class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
   class { 'libreoffice::install':
     majorver => $majorver,
@@ -40,6 +32,8 @@ class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
     incr     => $incr,
     subincr  => $subincr,
   } -> class { 'libreoffice::config':
+    majorver => $majorver,
+    minorver => $minorver,
     language => $language,
     country  => $country,
   } ~> class { 'libreoffice::service':
