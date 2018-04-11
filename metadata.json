@@ -1,17 +1,35 @@
 {
+  "name": "dsestero-libreoffice",
+  "version": "0.1.0",
   "author": "Dario Sestero",
-  "dependencies": [    {
+  "summary": "Installs and set up a service for libreoffice listening on port 8100.",
+  "license": "Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0)",
+  "source": "ssh://git@puppet/var/lib/git/puppetmodules/libreoffice.git",
+  "project_page": "",
+  "dependencies": [
+    {
       "name": "dsestero/download_uncompress",
       "version_requirement": ">=1.0.0"
     }
   ],
-  "license": "Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0)",
-  "name": "dsestero-libreoffice",
-  "operatingsystem_support": [{"operatingsystem": "Ubuntu"}, {"operatingsystem": "Debian"}],
-  "project_page": "",
-  "requirements": [{"name": "puppet", "version_requirement": "3.x"}],
-  "source": "ssh://git@puppet/var/lib/git/puppetmodules/libreoffice.git",
-  "summary": "Installs and set up a service for libreoffice listening on port 8100.",
-  "tags": ["libreoffice"],
-  "version": "0.1.0"
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu"
+    },
+    {
+      "operatingsystem": "Debian"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "tags": [
+    "libreoffice"
+  ],
+  "pdk-version": "1.4.1",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.4.1-0-g52adbbb"
 }
