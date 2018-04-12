@@ -22,7 +22,7 @@
 #     incr     => '6',
 #     subincr  => '2',
 #     locale   => 'it_IT',
-#}
+#   }
 #
 # @author Dario Sestero
 class libreoffice ($majorver, $minorver, $incr, $subincr, $language, $country) {
