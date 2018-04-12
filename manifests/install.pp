@@ -29,7 +29,7 @@ class libreoffice::install ($majorver, $minorver, $incr, $subincr) {
   }
 
   exec { 'install_libreoffice':
-    command   => "dpkg -i *.deb",
+    command   => 'dpkg -i *.deb',
     cwd       => "/tmp/${inst_folder}/DEBS",
     creates   => "/opt/libreoffice${majorver}.${minorver}",
     require   => Download_uncompress['dwnl_inst_libreoffice'],

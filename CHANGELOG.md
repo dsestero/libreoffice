@@ -2,3 +2,4 @@
 ###Summary
 Full revision to comply with Puppet 4/5 new recommended style.
 Compliant with pdk.
+First release on GitHub and Puppet Forge.

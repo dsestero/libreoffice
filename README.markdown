@@ -1,3 +1,0 @@
-# libreoffice #
-
-This is the libreoffice module. It provides...
