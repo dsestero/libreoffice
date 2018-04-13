@@ -3,9 +3,10 @@
   "version": "0.2.0",
   "author": "Dario Sestero",
   "summary": "Installs and set up a service for libreoffice listening on port 8100.",
-  "license": "CC-BY-SA-4.0",
+  "license": "MPL-2.0",
   "source": "ssh://git@puppet/var/lib/git/puppetmodules/libreoffice.git",
-  "project_page": "",
+  "project_page": "https://github.com/dsestero/libreoffice",
+  "issues_url": "https://github.com/dsestero/libreoffice/issues",
   "dependencies": [
     {
       "name": "dsestero/download_uncompress",
